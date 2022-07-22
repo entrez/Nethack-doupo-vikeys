@@ -30,9 +30,13 @@ command:
 - "789\
    456\
    123"  to move.
+- "yku\
+   h.l\
+   bjn"  to move if VI keys set.
 - ','    to pick up something
-- 'b'    to view your bag
+- 'b'    to view your bag (also 'i')
 - 'e'    to eat the meat and recover hp
+- 'O'    to change between Number pad and VI
 - 'q'    to quit the game
 
 ## enjoy and finish the game as quick as you can

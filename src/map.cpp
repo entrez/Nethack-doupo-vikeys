@@ -8,6 +8,7 @@
 #include "position.h"
 #include "monsters.h"
 #include "player.h"
+#include "setting.h"
 using namespace std;
 Map::Map(){
   srand(time(NULL));
@@ -100,7 +101,8 @@ void Map::SetPlayer(){
   map_[po.Gety()][po.Getx()] = make_pair('@',1);
 }
 void Map::PlayerWalk(char dir){
-  if(dir=='1'){
+  char * movekeys = s_.GetKeys();
+  if(dir==movekeys[KEY_SW]){
     if(map_[p_.GetPosition().DownLeftPosition().Gety()][p_.GetPosition().DownLeftPosition().Getx()].first=='M'){
       FightHelper(p_.GetPosition().DownLeftPosition());
     }
@@ -109,7 +111,7 @@ void Map::PlayerWalk(char dir){
       p_.SetPosition(p_.GetPosition().DownLeftPosition());
     }
   }
-  else if(dir=='2'){
+  else if(dir==movekeys[KEY_S]){
     if(map_[p_.GetPosition().DownPosition().Gety()][p_.GetPosition().DownPosition().Getx()].first=='M'){
       FightHelper(p_.GetPosition().DownPosition());
     }
@@ -118,7 +120,7 @@ void Map::PlayerWalk(char dir){
       p_.SetPosition(p_.GetPosition().DownPosition());
     }
   }
-  else if(dir == '3'){
+  else if(dir == movekeys[KEY_SE]){
     if(map_[p_.GetPosition().DownRightPosition().Gety()][p_.GetPosition().DownRightPosition().Getx()].first=='M'){
       FightHelper(p_.GetPosition().DownRightPosition());
     }
@@ -127,7 +129,7 @@ void Map::PlayerWalk(char dir){
       p_.SetPosition(p_.GetPosition().DownRightPosition());
     }
   }
-  else if(dir == '4'){
+  else if(dir == movekeys[KEY_W]){
     if(map_[p_.GetPosition().LeftPosition().Gety()][p_.GetPosition().LeftPosition().Getx()].first=='M'){
       FightHelper(p_.GetPosition().LeftPosition());
     }
@@ -136,10 +138,10 @@ void Map::PlayerWalk(char dir){
       p_.SetPosition(p_.GetPosition().LeftPosition());
     }
   }
-  else if(dir == '5'){
+  else if(dir == movekeys[KEY_REST]){
       ;//alkHelper(p_.GetPosition(),p_.GetPosition());
   }
-  else if(dir == '6'){
+  else if(dir == movekeys[KEY_E]){
     if(map_[p_.GetPosition().RightPosition().Gety()][p_.GetPosition().RightPosition().Getx()].first=='M'){
       FightHelper(p_.GetPosition().RightPosition());
     }
@@ -148,7 +150,7 @@ void Map::PlayerWalk(char dir){
       p_.SetPosition(p_.GetPosition().RightPosition());
     }
   }
-  else if(dir == '7'){
+  else if(dir == movekeys[KEY_NW]){
     if(map_[p_.GetPosition().UpLeftPosition().Gety()][p_.GetPosition().UpLeftPosition().Getx()].first=='M'){
       FightHelper(p_.GetPosition().UpLeftPosition());
     }
@@ -157,7 +159,7 @@ void Map::PlayerWalk(char dir){
       p_.SetPosition(p_.GetPosition().UpLeftPosition());
     }
   }
-  else if(dir == '8'){
+  else if(dir == movekeys[KEY_N]){
     if(map_[p_.GetPosition().UpPosition().Gety()][p_.GetPosition().UpPosition().Getx()].first=='M'){
       FightHelper(p_.GetPosition().UpPosition());
     }
@@ -166,7 +168,7 @@ void Map::PlayerWalk(char dir){
       p_.SetPosition(p_.GetPosition().UpPosition());
     }
   }
-  else if(dir == '9'){
+  else if(dir == movekeys[KEY_NE]){
     if(map_[p_.GetPosition().UpRightPosition().Gety()][p_.GetPosition().UpRightPosition().Getx()].first=='M'){
       FightHelper(p_.GetPosition().UpRightPosition());
     }

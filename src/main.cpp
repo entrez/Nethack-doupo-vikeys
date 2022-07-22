@@ -8,6 +8,7 @@
 #include <ctime>
 #include "window.h"
 #include "player.h"
+#include "setting.h"
 #include "map.h"
 using namespace std;
 int main(){//using terminal 24*80
@@ -39,7 +40,7 @@ int main(){//using terminal 24*80
       e->PrintAction("Press any key to continue.");
       break;
     }
-    if(strchr("123456789",com)){
+    if(strchr(map.s_.GetKeys(),com)){
       map.PlayerWalk(com);
       e->PrintMap(map);
     }
@@ -51,7 +52,7 @@ int main(){//using terminal 24*80
       else e->PrintAction("Nothing is there.");
       //pick up something
     }
-    else if(com == 'b'){
+    else if(com == 'b' || com == 'i'){
 
       e->PrintBag(map.p_);
       //view the bag
@@ -68,6 +69,14 @@ int main(){//using terminal 24*80
         e->PrintMap(map);
         e->PrintAction("There is nothing to eat.");
       }
+    }
+    else if(com == 'O'){
+      e->PrintMap(map);
+      map.s_.ChangeNumberPad(-1);
+      if(map.s_.GetNumberPad()==0)
+        e->PrintAction("Using VI keys.");
+      else
+        e->PrintAction("Using Number.");
     }
     else {
       e->PrintMap(map);

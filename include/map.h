@@ -3,6 +3,7 @@
 #include "room.h"
 #include "position.h"
 #include "player.h"
+#include "setting.h"
 #include "monsters.h"
 class Map{
   /*
@@ -18,6 +19,7 @@ class Map{
     pair<char,int> last_position_;
   public:
     Player p_;
+    Setting s_;
     pair<char,int> map_[25][82];
     Map();
     ~Map();
